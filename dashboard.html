@@ -1,176 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Dashboard | Team Game Changer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<title>TGC Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * { box-sizing: border-box; font-family: Arial, sans-serif; }
+<style>
+*{
+  box-sizing:border-box;
+  font-family:"Segoe UI",Arial,sans-serif;
+}
 
-    body {
-      margin: 0;
-      background: #000;
-      color: #fff;
-      display: flex;
-      min-height: 100vh;
-    }
+body{
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(160deg,#020617,#000814 65%);
+  color:#e5e7eb;
+}
 
-    /* Sidebar */
-    .sidebar {
-      width: 240px;
-      background: #0f0f0f;
-      padding: 20px;
-      box-shadow: 2px 0 15px rgba(0,255,200,0.15);
-    }
+/* ===== Layout ===== */
+.app{
+  display:flex;
+  min-height:100vh;
+}
 
-    .sidebar h2 {
-      color: #00ffd5;
-      text-align: center;
-      margin-bottom: 30px;
-    }
+/* ===== Sidebar ===== */
+.sidebar{
+  width:260px;
+  background:#020617;
+  padding:30px 22px;
+  border-right:1px solid rgba(255,255,255,0.06);
+}
 
-    .sidebar a {
-      display: block;
-      text-decoration: none;
-      color: #fff;
-      padding: 14px;
-      border-radius: 10px;
-      margin-bottom: 12px;
-      background: #111;
-      text-align: center;
-      font-weight: bold;
-    }
+.brand{
+  font-size:22px;
+  font-weight:700;
+  color:#38bdf8;
+  margin-bottom:40px;
+}
 
-    .sidebar a:hover {
-      background: #00ffd5;
-      color: #000;
-    }
+.profile{
+  text-align:center;
+  margin-bottom:30px;
+}
 
-    /* Main */
-    .main {
-      flex: 1;
-      padding: 25px;
-    }
+.profile img{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  border:3px solid #38bdf8;
+  object-fit:cover;
+}
 
-    .card {
-      background: #111;
-      padding: 20px;
-      border-radius: 16px;
-      margin-bottom: 20px;
-      box-shadow: 0 0 25px rgba(0,255,200,0.15);
-    }
+.profile h3{
+  margin:12px 0 4px;
+  font-size:18px;
+}
 
-    .card h3 {
-      color: #00ffd5;
-      margin-top: 0;
-    }
+.profile p{
+  font-size:14px;
+  color:#94a3b8;
+}
 
-    .stats {
-      display: flex;
-      gap: 15px;
-    }
+/* ===== Menu ===== */
+.menu a{
+  display:block;
+  padding:14px 18px;
+  margin-bottom:14px;
+  border-radius:14px;
+  text-decoration:none;
+  color:#cbd5f5;
+  background:rgba(255,255,255,0.04);
+}
 
-    .stat {
-      flex: 1;
-      background: #0d0d0d;
-      padding: 20px;
-      border-radius: 14px;
-      text-align: center;
-    }
+.menu a:hover{
+  background:linear-gradient(135deg,#38bdf8,#22d3ee);
+  color:#020617;
+}
 
-    .stat span {
-      display: block;
-      font-size: 26px;
-      color: #00ffd5;
-      font-weight: bold;
-    }
+/* ===== Main ===== */
+.main{
+  flex:1;
+  padding:30px 32px;
+}
 
-    .logout {
-      margin-top: 30px;
-      background: #ff3b3b;
-      color: #fff;
-      border: none;
-      width: 100%;
-      padding: 14px;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+/* Topbar */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:35px;
+}
 
-    /* Mobile */
-    @media (max-width: 768px) {
-      body { flex-direction: column; }
-      .sidebar { width: 100%; display: flex; flex-wrap: wrap; gap: 10px; }
-      .sidebar a { flex: 1; }
-    }
-  </style>
+.topbar h1{
+  font-size:24px;
+}
+
+.menu-btn{
+  font-size:26px;
+  cursor:pointer;
+}
+
+/* Cards */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:26px;
+}
+
+.card{
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(10px);
+  border-radius:22px;
+  padding:28px;
+  box-shadow:0 25px 60px rgba(0,0,0,0.6);
+}
+
+.card span{
+  font-size:14px;
+  color:#94a3b8;
+}
+
+.card h2{
+  margin-top:12px;
+  font-size:30px;
+  color:#38bdf8;
+}
+
+/* Services */
+.services{
+  margin-top:50px;
+}
+
+.services h2{
+  margin-bottom:22px;
+}
+
+.service{
+  background:rgba(255,255,255,0.05);
+  padding:18px 20px;
+  border-radius:16px;
+  margin-bottom:14px;
+  border-left:4px solid #38bdf8;
+}
+
+/* Footer */
+.footer{
+  margin-top:60px;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,0.08);
+  display:flex;
+  justify-content:center;
+  gap:30px;
+}
+
+.footer a{
+  color:#38bdf8;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* Mobile */
+@media(max-width:768px){
+  .sidebar{
+    display:none;
+  }
+}
+</style>
 </head>
 
 <body>
 
+<div class="app">
+
   <!-- Sidebar -->
   <div class="sidebar">
-    <h2>TGC</h2>
-    <a href="#">Dashboard</a>
-    <a href="https://t.me/teamgamechanger63" target="_blank">Telegram</a>
-    <a href="https://whatsapp.com/channel/0029ValWqLzJpe8mK5Ctru1O" target="_blank">WhatsApp</a>
-    <button class="logout" onclick="logout()">Logout</button>
+    <div class="brand">TGC PANEL</div>
+
+    <div class="profile">
+      <img src="https://i.imgur.com/8Km9tLL.png" alt="Profile">
+      <h3 id="username">User Name</h3>
+      <p id="rank">Bronze Member</p>
+    </div>
+
+    <div class="menu">
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Team / Profile</a>
+      <a href="#">Support</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </div>
   </div>
 
   <!-- Main -->
   <div class="main">
-    <div class="card">
-      <h3>Welcome</h3>
-      <p>You are logged in successfully 🎉</p>
-      <p id="userEmail" style="color:#00ffd5;font-weight:bold;"></p>
+
+    <div class="topbar">
+      <h1>Dashboard</h1>
+      <div class="menu-btn">☰</div>
     </div>
 
-    <div class="card">
-      <h3>Team Stats</h3>
-      <div class="stats">
-        <div class="stat">
-          <span>$100+</span>
-          <small>Daily Potential</small>
-        </div>
-        <div class="stat">
-          <span>24/7</span>
-          <small>Support</small>
-        </div>
+    <!-- Cards -->
+    <div class="cards">
+      <div class="card">
+        <span>Total Amount</span>
+        <h2>$0.00</h2>
+      </div>
+
+      <div class="card">
+        <span>Account Status</span>
+        <h2>Active</h2>
+      </div>
+
+      <div class="card">
+        <span>Your Rank</span>
+        <h2>Bronze</h2>
       </div>
     </div>
+
+    <!-- Services -->
+    <div class="services">
+      <h2>Our Services</h2>
+
+      <div class="service">✔ Education & Training System</div>
+      <div class="service">✔ Community Growth Program</div>
+      <div class="service">✔ Leadership Development</div>
+      <div class="service">✔ Future Opportunities</div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <a href="https://t.me/teamgamechanger63" target="_blank">Telegram</a>
+      <a href="https://whatsapp.com/channel/0029ValWqLzJpe8mK5Ctru1O" target="_blank">WhatsApp</a>
+      <a href="https://www.instagram.com/teamgamechanger_25" target="_blank">Instagram</a>
+    </div>
+
   </div>
+</div>
 
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyB3tu2CdwnGtQaXpMFpOhDyhv28QHUyC6c",
-      authDomain: "team-game-changer.firebaseapp.com",
-      projectId: "team-game-changer",
-      appId: "1:446960687746:web:86fb77540efafcd997329b"
-    };
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyB3tu2CdwnGtQaXpMFpOhDyhv28QHUyC6c",
+  authDomain: "team-game-changer.firebaseapp.com",
+  projectId: "team-game-changer"
+};
 
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
 
-    auth.onAuthStateChanged(user => {
-      if (!user) {
-        window.location.href = "index.html";
-      } else {
-        document.getElementById("userEmail").innerText = user.email;
-      }
-    });
+/* Protect dashboard */
+auth.onAuthStateChanged(user=>{
+  if(!user){
+    window.location.href="index.html";
+  }else{
+    document.getElementById("username").innerText =
+      user.email.split("@")[0];
+  }
+});
 
-    function logout() {
-      auth.signOut().then(() => {
-        window.location.href = "index.html";
-      });
-    }
-  </script>
+function logout(){
+  auth.signOut().then(()=>{
+    window.location.href="index.html";
+  });
+}
+</script>
 
 </body>
-</html>
+  </html>
