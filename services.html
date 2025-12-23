@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team GC | Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:Poppins,sans-serif;background:#000;color:#fff}
+.sidebar{position:fixed;width:220px;height:100vh;background:#0f1117;padding:25px}
+.sidebar a{display:block;color:#fff;text-decoration:none;margin:15px 0;opacity:.8}
+.sidebar a:hover{opacity:1}
+.main{margin-left:220px;padding:30px}
+.card{background:#0f1117;padding:25px;border-radius:14px;margin-bottom:20px}
+h2{color:#00f0ff}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+<h3 style="color:#00f0ff">Team GC</h3>
+<a href="dashboard.html">Dashboard</a>
+<a href="services.html">Services</a>
+<a href="team.html">Team</a>
+<a href="announcements.html">Announcements</a>
+<a href="dashboard.html" onclick="logout()">Logout</a>
+</div>
+
+<div class="main">
+<h2>Our Services</h2>
+
+<div class="card">📘 Education & Skill Training</div>
+<div class="card">🧠 Mindset & Leadership Development</div>
+<div class="card">🤝 Team Support & Mentorship</div>
+<div class="card">📊 Digital Growth Guidance</div>
+<div class="card">🚀 Long-Term Vision Planning</div>
+
+</div>
+
+<script>
+if(!localStorage.getItem("loggedUser")) location.href="index.html";
+function logout(){
+localStorage.removeItem("loggedUser");
+location.href="index.html";
+}
+</script>
+
+</body>
+</html>
