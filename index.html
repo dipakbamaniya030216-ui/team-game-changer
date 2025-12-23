@@ -2,59 +2,156 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Team Game Changer - Login</title>
+  <title>Team Game Changer | Login</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #000000, #111111);
+      font-family: Arial, sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      padding: 30px;
+      background: #0f0f0f;
+      border-radius: 16px;
+      box-shadow: 0 0 30px rgba(0,255,200,0.25);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #00ffd5;
+      font-size: 28px;
+    }
+
+    input {
+      width: 100%;
+      padding: 16px;
+      font-size: 16px;
+      margin-bottom: 18px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      background: #1c1c1c;
+      color: #fff;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      font-size: 18px;
+      margin-top: 10px;
+      border-radius: 10px;
+      border: none;
+      background: #00ffd5;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: transparent;
+      color: #00ffd5;
+      border: 2px solid #00ffd5;
+      margin-top: 12px;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .links {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 15px;
+    }
+
+    .links a {
+      color: #00ffd5;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+
+    #msg {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 16px;
+      color: #00ffd5;
+    }
+  </style>
 </head>
 
-<body style="background:black;color:white;font-family:Arial;">
+<body>
 
-<h2>Team Game Changer</h2>
+  <div class="container">
+    <h1>Team Game Changer</h1>
 
-<input id="email" type="email" placeholder="Email"><br><br>
-<input id="password" type="password" placeholder="Password"><br><br>
+    <input id="email" type="email" placeholder="Email address">
+    <input id="password" type="password" placeholder="Password">
 
-<button onclick="register()">Register</button>
-<button onclick="login()">Login</button>
+    <button onclick="register()">Create Account</button>
+    <button class="secondary" onclick="login()">Login</button>
 
-<p id="msg"></p>
+    <div id="msg"></div>
 
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <div class="links">
+      <a href="https://t.me/teamgamechanger63" target="_blank">Telegram</a>
+      |
+      <a href="https://whatsapp.com/channel/0029ValWqLzJpe8mK5Ctru1O" target="_blank">WhatsApp</a>
+    </div>
+  </div>
 
-<script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyB3tu2CdwnGtQaXpMFpOhDyhv28QHUyC6c",
-    authDomain: "team-game-changer.firebaseapp.com",
-    projectId: "team-game-changer",
-    storageBucket: "team-game-changer.firebasestorage.app",
-    messagingSenderId: "446960687746",
-    appId: "1:446960687746:web:86fb77540efafcd997329b"
-  };
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
-  firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyB3tu2CdwnGtQaXpMFpOhDyhv28QHUyC6c",
+      authDomain: "team-game-changer.firebaseapp.com",
+      projectId: "team-game-changer",
+      storageBucket: "team-game-changer.firebasestorage.app",
+      messagingSenderId: "446960687746",
+      appId: "1:446960687746:web:86fb77540efafcd997329b"
+    };
 
-  function register() {
-    auth.createUserWithEmailAndPassword(
-      document.getElementById("email").value,
-      document.getElementById("password").value
-    ).then(() => {
-      document.getElementById("msg").innerText = "Account Created";
-      window.location.href = "dashboard.html";
-    }).catch(e => alert(e.message));
-  }
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
 
-  function login() {
-    auth.signInWithEmailAndPassword(
-      document.getElementById("email").value,
-      document.getElementById("password").value
-    ).then(() => {
-      document.getElementById("msg").innerText = "Login Success";
-      window.location.href = "dashboard.html";
-    }).catch(e => alert(e.message));
-  }
-</script>
+    function register() {
+      auth.createUserWithEmailAndPassword(
+        email.value,
+        password.value
+      ).then(() => {
+        msg.innerText = "Account Created Successfully";
+        setTimeout(() => window.location.href = "dashboard.html", 1200);
+      }).catch(e => alert(e.message));
+    }
+
+    function login() {
+      auth.signInWithEmailAndPassword(
+        email.value,
+        password.value
+      ).then(() => {
+        msg.innerText = "Login Successful";
+        setTimeout(() => window.location.href = "dashboard.html", 1200);
+      }).catch(e => alert(e.message));
+    }
+  </script>
 
 </body>
 </html>
