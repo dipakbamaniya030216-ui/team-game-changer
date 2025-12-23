@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Team Game Changer | Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #000000, #111111);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: #0f0f0f;
+      padding: 25px;
+      width: 100%;
+      max-width: 360px;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0,255,200,0.15);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #00ffd5;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      background: #1c1c1c;
+      color: #fff;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #00ffd5;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #00c9aa;
+    }
+
+    .links {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .links a {
+      color: #00ffd5;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #00ffd5;
+      color: #000;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Team Game Changer</h2>
+
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Password" />
+
+    <button onclick="register()">Create Account</button>
+    <button onclick="login()">Login</button>
+
+    <div class="links">
+      <a href="https://t.me/teamgamechanger63" target="_blank">Telegram</a> |
+      <a href="https://whatsapp.com/channel/0029ValWqLzJpe8mK5Ctru1O" target="_blank">WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="popup" id="popup">Login Successful</div>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyB3tu2CdwnGtQaXpMFpOhDyhv28QHUyC6c",
+      authDomain: "team-game-changer.firebaseapp.com",
+      projectId: "team-game-changer",
+      storageBucket: "team-game-changer.firebasestorage.app",
+      messagingSenderId: "446960687746",
+      appId: "1:446960687746:web:86fb77540efafcd997329b"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    function showPopup(msg) {
+      const pop = document.getElementById("popup");
+      pop.innerText = msg;
+      pop.style.display = "block";
+      setTimeout(() => pop.style.display = "none", 2500);
+    }
+
+    function register() {
+      const email = email.value;
+      const password = password.value;
+
+      auth.createUserWithEmailAndPassword(email, password)
+        .then(() => {
+          showPopup("Account Created");
+          setTimeout(() => window.location.href = "dashboard.html", 1500);
+        })
+        .catch(err => alert(err.message));
+    }
+
+    function login() {
+      const email = email.value;
+      const password = password.value;
+
+      auth.signInWithEmailAndPassword(email, password)
+        .then(() => {
+          showPopup("Login Successful");
+          setTimeout(() => window.location.href = "dashboard.html", 1500);
+        })
+        .catch(err => alert(err.message));
+    }
+  </script>
+
+</body>
+</html>
