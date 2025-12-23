@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard | Team Game Changer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+    }
+
+    header {
+      padding: 15px;
+      background: #0f0f0f;
+      text-align: center;
+      color: #00ffd5;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .card {
+      background: #111;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      box-shadow: 0 0 15px rgba(0,255,200,0.1);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #ff4d4d;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Welcome to Team Game Changer</header>
+
+  <div class="content">
+    <div class="card">
+      <h3>About</h3>
+      <p>Premium dark platform for our official team community.</p>
+    </div>
+
+    <div class="card">
+      <h3>Official Links</h3>
+      <p>
+        <a href="https://t.me/teamgamechanger63" style="color:#00ffd5">Telegram</a><br><br>
+        <a href="https://whatsapp.com/channel/0029ValWqLzJpe8mK5Ctru1O" style="color:#00ffd5">WhatsApp</a>
+      </p>
+    </div>
+
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyB3tu2CdwnGtQaXpMFpOhDyhv28QHUyC6c",
+      authDomain: "team-game-changer.firebaseapp.com",
+      projectId: "team-game-changer",
+      storageBucket: "team-game-changer.firebasestorage.app",
+      messagingSenderId: "446960687746",
+      appId: "1:446960687746:web:86fb77540efafcd997329b"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    auth.onAuthStateChanged(user => {
+      if (!user) {
+        window.location.href = "index.html";
+      }
+    });
+
+    function logout() {
+      auth.signOut().then(() => {
+        window.location.href = "index.html";
+      });
+    }
+  </script>
+
+</body>
+</html>
