@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>TGC Admin Panel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  background:#020617;
+  color:#fff;
+  font-family:Arial,sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+}
+.box{
+  width:100%;
+  max-width:400px;
+  background:#0f172a;
+  padding:30px;
+  border-radius:16px;
+}
+h2{
+  text-align:center;
+  color:#38bdf8;
+  margin-bottom:25px;
+}
+input,select,button{
+  width:100%;
+  padding:14px;
+  margin-bottom:16px;
+  border-radius:10px;
+  border:none;
+  font-size:15px;
+}
+input,select{
+  background:#020617;
+  color:#fff;
+}
+button{
+  background:#38bdf8;
+  color:#020617;
+  font-weight:bold;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>ADMIN RANK CONTROL</h2>
+
+  <input id="uid" placeholder="User UID">
+  
+  <select id="rank">
+    <option>Bronze</option>
+    <option>Silver</option>
+    <option>Gold</option>
+    <option>Platinum</option>
+    <option>Diamond</option>
+  </select>
+
+  <button onclick="updateRank()">Update Rank</button>
+</div>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyB3tu2CdwnGtQaXpMFpOhDyhv28QHUyC6c",
+  authDomain: "team-game-changer.firebaseapp.com",
+  projectId: "team-game-changer"
+};
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+/* 🔒 Admin email lock (change this to your email) */
+const ADMIN_EMAIL = "admin@gmail.com";
+
+auth.onAuthStateChanged(user=>{
+  if(!user || user.email !== ADMIN_EMAIL){
+    alert("Admin only access");
+    window.location.href = "index.html";
+  }
+});
+
+function updateRank(){
+  const uid = document.getElementById("uid").value;
+  const rank = document.getElementById("rank").value;
+
+  if(uid===""){
+    alert("Enter UID");
+    return;
+  }
+
+  db.collection("users").doc(uid).update({
+    rank: rank
+  }).then(()=>{
+    alert("Rank updated successfully");
+  }).catch(err=>{
+    alert(err.message);
+  });
+}
+</script>
+
+</body>
+</html>
