@@ -6,10 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-*{
-  box-sizing:border-box;
-  font-family:"Segoe UI",Arial,sans-serif;
-}
+*{box-sizing:border-box;font-family:"Segoe UI",Arial,sans-serif}
 
 body{
   margin:0;
@@ -18,13 +15,10 @@ body{
   color:#e5e7eb;
 }
 
-/* ===== Layout ===== */
-.app{
-  display:flex;
-  min-height:100vh;
-}
+/* Layout */
+.app{display:flex;min-height:100vh}
 
-/* ===== Sidebar ===== */
+/* Sidebar */
 .sidebar{
   width:260px;
   background:#020617;
@@ -36,7 +30,7 @@ body{
   font-size:22px;
   font-weight:700;
   color:#38bdf8;
-  margin-bottom:40px;
+  margin-bottom:35px;
 }
 
 .profile{
@@ -62,29 +56,9 @@ body{
   color:#94a3b8;
 }
 
-/* ===== Menu ===== */
-.menu a{
-  display:block;
-  padding:14px 18px;
-  margin-bottom:14px;
-  border-radius:14px;
-  text-decoration:none;
-  color:#cbd5f5;
-  background:rgba(255,255,255,0.04);
-}
+/* Main */
+.main{flex:1;padding:30px 32px}
 
-.menu a:hover{
-  background:linear-gradient(135deg,#38bdf8,#22d3ee);
-  color:#020617;
-}
-
-/* ===== Main ===== */
-.main{
-  flex:1;
-  padding:30px 32px;
-}
-
-/* Topbar */
 .topbar{
   display:flex;
   justify-content:space-between;
@@ -92,14 +66,7 @@ body{
   margin-bottom:35px;
 }
 
-.topbar h1{
-  font-size:24px;
-}
-
-.menu-btn{
-  font-size:26px;
-  cursor:pointer;
-}
+.menu-btn{font-size:26px;cursor:pointer}
 
 /* Cards */
 .cards{
@@ -116,32 +83,43 @@ body{
   box-shadow:0 25px 60px rgba(0,0,0,0.6);
 }
 
-.card span{
-  font-size:14px;
-  color:#94a3b8;
+.card span{font-size:14px;color:#94a3b8}
+.card h2{margin-top:12px;font-size:30px;color:#38bdf8}
+
+/* Right slide menu */
+.right-menu{
+  position:fixed;
+  top:0;
+  right:-260px;
+  width:260px;
+  height:100vh;
+  background:#020617;
+  padding:30px 22px;
+  transition:0.4s;
+  z-index:999;
 }
 
-.card h2{
-  margin-top:12px;
-  font-size:30px;
-  color:#38bdf8;
-}
-
-/* Services */
-.services{
-  margin-top:50px;
-}
-
-.services h2{
-  margin-bottom:22px;
-}
-
-.service{
+.right-menu a{
+  display:block;
+  margin-bottom:18px;
+  padding:14px;
+  border-radius:12px;
+  text-decoration:none;
+  color:#cbd5f5;
   background:rgba(255,255,255,0.05);
-  padding:18px 20px;
-  border-radius:16px;
-  margin-bottom:14px;
-  border-left:4px solid #38bdf8;
+}
+
+.right-menu a:hover{
+  background:#38bdf8;
+  color:#020617;
+}
+
+.close-btn{
+  font-size:22px;
+  cursor:pointer;
+  margin-bottom:30px;
+  color:#38bdf8;
+  display:block;
 }
 
 /* Footer */
@@ -162,9 +140,7 @@ body{
 
 /* Mobile */
 @media(max-width:768px){
-  .sidebar{
-    display:none;
-  }
+  .sidebar{display:none}
 }
 </style>
 </head>
@@ -178,17 +154,9 @@ body{
     <div class="brand">TGC PANEL</div>
 
     <div class="profile">
-      <img src="https://i.imgur.com/8Km9tLL.png" alt="Profile">
-      <h3 id="username">User Name</h3>
+      <img id="photo" src="https://i.imgur.com/8Km9tLL.png">
+      <h3 id="username">User</h3>
       <p id="rank">Bronze Member</p>
-    </div>
-
-    <div class="menu">
-      <a href="#">About</a>
-      <a href="#">Services</a>
-      <a href="#">Team / Profile</a>
-      <a href="#">Support</a>
-      <a href="#" onclick="logout()">Logout</a>
     </div>
   </div>
 
@@ -197,16 +165,10 @@ body{
 
     <div class="topbar">
       <h1>Dashboard</h1>
-      <div class="menu-btn">☰</div>
+      <div class="menu-btn" onclick="openMenu()">☰</div>
     </div>
 
-    <!-- Cards -->
     <div class="cards">
-      <div class="card">
-        <span>Total Amount</span>
-        <h2>$0.00</h2>
-      </div>
-
       <div class="card">
         <span>Account Status</span>
         <h2>Active</h2>
@@ -214,21 +176,10 @@ body{
 
       <div class="card">
         <span>Your Rank</span>
-        <h2>Bronze</h2>
+        <h2 id="rankCard">Bronze</h2>
       </div>
     </div>
 
-    <!-- Services -->
-    <div class="services">
-      <h2>Our Services</h2>
-
-      <div class="service">✔ Education & Training System</div>
-      <div class="service">✔ Community Growth Program</div>
-      <div class="service">✔ Leadership Development</div>
-      <div class="service">✔ Future Opportunities</div>
-    </div>
-
-    <!-- Footer -->
     <div class="footer">
       <a href="https://t.me/teamgamechanger63" target="_blank">Telegram</a>
       <a href="https://whatsapp.com/channel/0029ValWqLzJpe8mK5Ctru1O" target="_blank">WhatsApp</a>
@@ -238,30 +189,60 @@ body{
   </div>
 </div>
 
+<!-- Right menu -->
+<div id="rightMenu" class="right-menu">
+  <span class="close-btn" onclick="closeMenu()">✖</span>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Team / Profile</a>
+  <a href="#">Support / Customer Service</a>
+  <a href="#" onclick="logout()">Logout</a>
+</div>
+
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
 <script>
-const firebaseConfig = {
-  apiKey: "AIzaSyB3tu2CdwnGtQaXpMFpOhDyhv28QHUyC6c",
-  authDomain: "team-game-changer.firebaseapp.com",
-  projectId: "team-game-changer"
+const firebaseConfig={
+  apiKey:"AIzaSyB3tu2CdwnGtQaXpMFpOhDyhv28QHUyC6c",
+  authDomain:"team-game-changer.firebaseapp.com",
+  projectId:"team-game-changer"
 };
 
 firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
+const auth=firebase.auth();
+const db=firebase.firestore();
 
-/* Protect dashboard */
+/* Protect + load data */
 auth.onAuthStateChanged(user=>{
   if(!user){
     window.location.href="index.html";
   }else{
-    document.getElementById("username").innerText =
-      user.email.split("@")[0];
+    db.collection("users").doc(user.uid).get().then(doc=>{
+      if(doc.exists){
+        const d=doc.data();
+        document.getElementById("username").innerText=d.name;
+        document.getElementById("rank").innerText=d.rank+" Member";
+        document.getElementById("rankCard").innerText=d.rank;
+        if(d.photo){
+          document.getElementById("photo").src=d.photo;
+        }
+      }
+    });
   }
 });
 
+/* Menu */
+function openMenu(){
+  document.getElementById("rightMenu").style.right="0";
+}
+function closeMenu(){
+  document.getElementById("rightMenu").style.right="-260px";
+}
+
+/* Logout */
 function logout(){
   auth.signOut().then(()=>{
     window.location.href="index.html";
