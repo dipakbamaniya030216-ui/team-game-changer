@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Team Game Changer | Login</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
     * {
       box-sizing: border-box;
+      font-family: Arial, sans-serif;
     }
 
     body {
       margin: 0;
       height: 100vh;
       background: linear-gradient(135deg, #000000, #111111);
-      font-family: Arial, sans-serif;
       color: #fff;
       display: flex;
       justify-content: center;
@@ -35,6 +35,154 @@
       margin-bottom: 30px;
       color: #00ffd5;
       font-size: 28px;
+    }
+
+    input {
+      width: 100%;
+      padding: 16px;
+      font-size: 16px;
+      margin-bottom: 18px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      background: #1c1c1c;
+      color: #fff;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      font-size: 18px;
+      margin-top: 10px;
+      border-radius: 10px;
+      border: none;
+      background: #00ffd5;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: transparent;
+      color: #00ffd5;
+      border: 2px solid #00ffd5;
+      margin-top: 12px;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .links {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 15px;
+    }
+
+    .links a {
+      color: #00ffd5;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+
+    /* Popup */
+    .popup {
+      position: fixed;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #00ffd5;
+      color: #000;
+      padding: 14px 22px;
+      border-radius: 12px;
+      font-weight: bold;
+      box-shadow: 0 10px 30px rgba(0,255,200,0.4);
+      transition: top 0.5s ease;
+      z-index: 999;
+    }
+
+    .popup.show {
+      top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Team Game Changer</h1>
+
+    <input id="email" type="email" placeholder="Email address" />
+    <input id="password" type="password" placeholder="Password" />
+
+    <button onclick="register()">Create Account</button>
+    <button class="secondary" onclick="login()">Login</button>
+
+    <div class="links">
+      <a href="https://t.me/teamgamechanger63" target="_blank">Telegram</a> |
+      <a href="https://whatsapp.com/channel/0029ValWqLzJpe8mK5Ctru1O" target="_blank">WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- Popup -->
+  <div id="popup" class="popup">Success</div>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyB3tu2CdwnGtQaXpMFpOhDyhv28QHUyC6c",
+      authDomain: "team-game-changer.firebaseapp.com",
+      projectId: "team-game-changer",
+      storageBucket: "team-game-changer.firebasestorage.app",
+      messagingSenderId: "446960687746",
+      appId: "1:446960687746:web:86fb77540efafcd997329b"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    function showPopup(text) {
+      const p = document.getElementById("popup");
+      p.innerText = text;
+      p.classList.add("show");
+      setTimeout(() => p.classList.remove("show"), 1800);
+    }
+
+    function register() {
+      auth.createUserWithEmailAndPassword(
+        document.getElementById("email").value,
+        document.getElementById("password").value
+      )
+      .then(() => {
+        showPopup("Account Created 🎉");
+        setTimeout(() => {
+          window.location.href = "dashboard.html";
+        }, 1600);
+      })
+      .catch(e => alert(e.message));
+    }
+
+    function login() {
+      auth.signInWithEmailAndPassword(
+        document.getElementById("email").value,
+        document.getElementById("password").value
+      )
+      .then(() => {
+        showPopup("Login Successful ✅");
+        setTimeout(() => {
+          window.location.href = "dashboard.html";
+        }, 1600);
+      })
+      .catch(e => alert(e.message));
+    }
+  </script>
+
+</body>
+</html>      font-size: 28px;
     }
 
     input {
