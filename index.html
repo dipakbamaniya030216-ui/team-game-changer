@@ -4,15 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Team Game Changer</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap" rel="stylesheet">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-font-family:'Poppins',sans-serif;
-background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+font-family:'Montserrat',sans-serif;
+background:#05050a;
 color:#fff;
+overflow-x:hidden;
 }
-header{
+
+/* Neon background */
+.bg{
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 20% 30%, #00f0ff33, transparent 40%),
+radial-gradient(circle at 80% 70%, #ff00ff33, transparent 40%);
+z-index:-1;
+}
+
+/* HERO */
+.hero{
 min-height:100vh;
 display:flex;
 flex-direction:column;
@@ -21,111 +36,156 @@ align-items:center;
 text-align:center;
 padding:20px;
 }
-header h1{
-font-size:2.5rem;
-color:#ffd700;
+.hero h1{
+font-size:3rem;
+font-weight:900;
+background:linear-gradient(90deg,#00f0ff,#ff00ff);
+-webkit-background-clip:text;
+color:transparent;
+animation:glow 3s infinite alternate;
 }
-header p{
-max-width:600px;
-margin:15px 0 25px;
-opacity:0.9;
+@keyframes glow{
+from{filter:drop-shadow(0 0 5px #00f0ff)}
+to{filter:drop-shadow(0 0 20px #ff00ff)}
 }
-.btns a{
+.hero p{
+max-width:650px;
+margin:20px 0 40px;
+font-size:1.05rem;
+opacity:.85;
+}
+.hero .btns a{
 display:inline-block;
-margin:8px;
-padding:14px 30px;
-border-radius:30px;
+margin:10px;
+padding:16px 36px;
+border-radius:40px;
+font-weight:700;
 text-decoration:none;
-font-weight:600;
 color:#fff;
-background:linear-gradient(135deg,#25D366,#128C7E);
+background:linear-gradient(135deg,#00f0ff,#0066ff);
+box-shadow:0 0 25px #00f0ff66;
+transition:.3s;
 }
-.btns a.telegram{
-background:linear-gradient(135deg,#0088cc,#005f99);
+.hero .btns a.tg{
+background:linear-gradient(135deg,#ff00ff,#b000ff);
+box-shadow:0 0 25px #ff00ff66;
 }
+.hero .btns a:hover{
+transform:scale(1.08);
+}
+
+/* SECTION */
 section{
-padding:70px 20px;
-max-width:1000px;
+padding:90px 20px;
+max-width:1100px;
 margin:auto;
-text-align:center;
 }
 section h2{
-color:#ffd700;
-margin-bottom:25px;
-font-size:2rem;
+text-align:center;
+font-size:2.2rem;
+margin-bottom:40px;
+font-weight:800;
+color:#00f0ff;
 }
-.cards{
+
+/* CARDS */
+.grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:25px;
 }
 .card{
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(10px);
-border-radius:20px;
-padding:25px;
+background:rgba(255,255,255,0.06);
+border-radius:22px;
+padding:30px;
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,0.1);
+box-shadow:0 0 40px #000;
+transition:.4s;
 }
+.card:hover{
+transform:translateY(-10px) scale(1.03);
+box-shadow:0 0 40px #00f0ff55;
+}
+.card span{
+font-size:2rem;
+display:block;
+margin-bottom:15px;
+}
+
+/* CTA */
+.cta{
+text-align:center;
+}
+.cta a{
+display:inline-block;
+margin-top:30px;
+padding:18px 45px;
+border-radius:50px;
+font-weight:800;
+text-decoration:none;
+color:#000;
+background:linear-gradient(90deg,#00f0ff,#ff00ff);
+}
+
+/* FOOTER */
 footer{
 text-align:center;
-padding:20px;
+padding:25px;
 background:#000;
-opacity:0.8;
+opacity:.7;
+font-size:.9rem;
 }
 </style>
 </head>
-<body>
 
-<header>
+<body>
+<div class="bg"></div>
+
+<!-- HERO -->
+<div class="hero">
 <h1>TEAM GAME CHANGER</h1>
 <p>
-Together we grow. Together we succeed.  
-A powerful team built on vision, discipline, and consistency.
+An elite growth-driven community built for leaders, winners,
+and people who refuse to stay average.
 </p>
 <div class="btns">
 <a href="https://whatsapp.com/channel/0029ValWqLzJpe8mK5Ctru1O">Join WhatsApp</a>
-<a href="https://t.me/teamgamechanger63" class="telegram">Join Telegram</a>
+<a href="https://t.me/teamgamechanger63" class="tg">Join Telegram</a>
 </div>
-</header>
+</div>
 
+<!-- ABOUT -->
 <section>
 <h2>Who We Are</h2>
-<p>
-Team Game Changer is a modern and fast-growing community focused on
-education, teamwork, and long-term success.
-</p>
-</section>
-
-<section>
-<h2>Our Mission</h2>
-<div class="cards">
-<div class="card">🚀 Build a strong global team</div>
-<div class="card">🎯 Mission 1CR & beyond</div>
-<div class="card">📚 Education & leadership training</div>
-<div class="card">🤝 Strong support system</div>
+<div class="grid">
+<div class="card"><span>⚡</span>High-performance team culture</div>
+<div class="card"><span>🚀</span>Next-level mindset & execution</div>
+<div class="card"><span>🎓</span>Education-based growth system</div>
+<div class="card"><span>🤝</span>Strong leadership & support</div>
 </div>
 </section>
 
+<!-- MISSION -->
 <section>
-<h2>Why Choose Us</h2>
-<div class="cards">
-<div class="card">✅ Trusted leadership</div>
-<div class="card">✅ Daily motivation & growth</div>
-<div class="card">✅ Transparent system</div>
-<div class="card">✅ Long-term vision</div>
+<h2>Our Vision</h2>
+<div class="grid">
+<div class="card"><span>🌍</span>Build a global powerhouse team</div>
+<div class="card"><span>💰</span>Mission 1CR & beyond</div>
+<div class="card"><span>📈</span>Create long-term digital assets</div>
+<div class="card"><span>🏆</span>Develop future leaders</div>
 </div>
 </section>
 
-<section>
-<h2>Get Started</h2>
-<p>Take the first step towards growth and success.</p>
-<div class="btns">
-<a href="https://whatsapp.com/channel/0029ValWqLzJpe8mK5Ctru1O">Connect on WhatsApp</a>
-<a href="https://t.me/teamgamechanger63" class="telegram">Join Telegram Community</a>
-</div>
+<!-- CTA -->
+<section class="cta">
+<h2>Ready to Level Up?</h2>
+<p>Stop watching. Start winning with the right team.</p>
+<a href="YOURWHATSAPPLINK">Join the Movement</a>
 </section>
 
 <footer>
-© Team Game Changer | Grow • Lead • Succeed
+© Team Game Changer • Elite Minds Only
 </footer>
 
 </body>
