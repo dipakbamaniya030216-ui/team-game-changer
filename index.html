@@ -4,87 +4,128 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Team Game Changer</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
+*{margin:0;padding:0;box-sizing:border-box}
 body{
-margin:0;
-font-family:Arial, sans-serif;
-background:#0b0f1a;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
 color:#fff;
-text-align:center;
 }
 header{
-padding:40px 20px;
-background:linear-gradient(135deg,#1e3c72,#2a5298);
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
 }
-section{
-padding:40px 20px;
-}
-h1,h2{
+header h1{
+font-size:2.5rem;
 color:#ffd700;
 }
-.btn{
-display:inline-block;
-margin:10px;
-padding:12px 25px;
-background:#25D366;
-color:#fff;
-text-decoration:none;
-border-radius:30px;
-font-weight:bold;
+header p{
+max-width:600px;
+margin:15px 0 25px;
+opacity:0.9;
 }
-.btn.telegram{
-background:#0088cc;
+.btns a{
+display:inline-block;
+margin:8px;
+padding:14px 30px;
+border-radius:30px;
+text-decoration:none;
+font-weight:600;
+color:#fff;
+background:linear-gradient(135deg,#25D366,#128C7E);
+}
+.btns a.telegram{
+background:linear-gradient(135deg,#0088cc,#005f99);
+}
+section{
+padding:70px 20px;
+max-width:1000px;
+margin:auto;
+text-align:center;
+}
+section h2{
+color:#ffd700;
+margin-bottom:25px;
+font-size:2rem;
+}
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+.card{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+border-radius:20px;
+padding:25px;
 }
 footer{
+text-align:center;
 padding:20px;
 background:#000;
-font-size:14px;
+opacity:0.8;
 }
 </style>
 </head>
-
 <body>
 
 <header>
 <h1>TEAM GAME CHANGER</h1>
-<p>Together we grow. Together we succeed 💪</p>
-<a href="YOURWHATSAPPLINK" class="btn">Join WhatsApp Team</a>
-<a href="YOURTELEGRAMLINK" class="btn telegram">Join Telegram Community</a>
+<p>
+Together we grow. Together we succeed.  
+A powerful team built on vision, discipline, and consistency.
+</p>
+<div class="btns">
+<a href="https://whatsapp.com/channel/0029ValWqLzJpe8mK5Ctru1O">Join WhatsApp</a>
+<a href="https://t.me/teamgamechanger63" class="telegram">Join Telegram</a>
+</div>
 </header>
 
 <section>
-<h2>About Us</h2>
+<h2>Who We Are</h2>
 <p>
-Team Game Changer is a powerful and fast-growing community focused on
+Team Game Changer is a modern and fast-growing community focused on
 education, teamwork, and long-term success.
-We believe in helping every member grow financially and personally.
 </p>
 </section>
 
 <section>
 <h2>Our Mission</h2>
-<p>🚀 Build a strong global team</p>
-<p>🎯 Mission 1CR & beyond</p>
-<p>📚 Education & training support</p>
-<p>🤝 Strong team culture</p>
+<div class="cards">
+<div class="card">🚀 Build a strong global team</div>
+<div class="card">🎯 Mission 1CR & beyond</div>
+<div class="card">📚 Education & leadership training</div>
+<div class="card">🤝 Strong support system</div>
+</div>
 </section>
 
 <section>
-<h2>Why Join Us?</h2>
-<p>✅ Strong leadership</p>
-<p>✅ Daily motivation & guidance</p>
-<p>✅ Transparent & trusted system</p>
-<p>✅ Long-term vision</p>
+<h2>Why Choose Us</h2>
+<div class="cards">
+<div class="card">✅ Trusted leadership</div>
+<div class="card">✅ Daily motivation & growth</div>
+<div class="card">✅ Transparent system</div>
+<div class="card">✅ Long-term vision</div>
+</div>
 </section>
 
 <section>
-<h2>Contact Us</h2>
-<p>📲 WhatsApp Support Available</p>
-<a href="YOURWHATSAPPLINK" class="btn">Contact on WhatsApp</a>
+<h2>Get Started</h2>
+<p>Take the first step towards growth and success.</p>
+<div class="btns">
+<a href="https://whatsapp.com/channel/0029ValWqLzJpe8mK5Ctru1O">Connect on WhatsApp</a>
+<a href="https://t.me/teamgamechanger63" class="telegram">Join Telegram Community</a>
+</div>
 </section>
 
 <footer>
-<p>© Team Game Changer | Let’s grow and succeed together 🚀</p>
+© Team Game Changer | Grow • Lead • Succeed
 </footer>
 
 </body>
