@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #0b0f1a;
+  color: #ffffff;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background: rgba(0,0,0,0.6);
+  position: sticky;
+  top: 0;
+}
+
+.logo {
+  font-weight: 700;
+  color: #f5c542;
+}
+
+nav a {
+  margin-left: 15px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: #f5c542;
+}
+
+/* HERO */
+.hero {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero h1 {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.hero span {
+  color: #f5c542;
+}
+
+.hero p {
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+/* BUTTONS */
+.buttons {
+  margin-top: 25px;
+}
+
+.btn {
+  padding: 12px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  margin: 5px;
+  font-size: 14px;
+}
+
+.primary {
+  background: #f5c542;
+  color: #000;
+}
+
+.secondary {
+  border: 1px solid #f5c542;
+  color: #f5c542;
+}
+
+/* ABOUT */
+.about {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.about h2 {
+  color: #f5c542;
+  margin-bottom: 10px;
+}
+
+/* QUOTE */
+.quote {
+  padding: 30px;
+  background: #11162a;
+  text-align: center;
+  font-style: italic;
+}
+
+/* FOOTER */
+footer {
+  padding: 15px;
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.6;
+}
+/* GALLERY */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.gallery-item {
+  height: 120px;
+  background: linear-gradient(135deg, #1a1f3c, #0b0f1a);
+  border: 1px solid #f5c542;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f5c542;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(245,197,66,0.6);
+  }
